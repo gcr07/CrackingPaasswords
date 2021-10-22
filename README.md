@@ -1,4 +1,4 @@
-# CrackingPaasswords
+# CrackingPasswords
 
 
 <h2> Hashcat </h2>
