@@ -25,8 +25,21 @@ por lo regular usan el delimitador $
 
 <h3> Modos de ataque parametro -a </h3>
 
-0	Straight (Diccionario)
-1	Combination (Dos listas y una las palabras ejemplo pass:marcos quita los 2 puntos passmarcos uniria de lista1 y de lista2)
-3	Brute-force
-6	Hybrid Wordlist + Mask
-7	Hybrid Mask + Wordlist
+<ol>
+<li> 0	Straight (Diccionario) </li>
+<li> 1	Combination (Dos listas y una las palabras ejemplo pass:marcos quita los 2 puntos passmarcos uniria de lista1 y de lista2) </li>
+<li> 3	Brute-force </li>
+<li> 6	Hybrid Wordlist + Mask </li>
+<li> 7	Hybrid Mask + Wordlist </li>
+</ol>
+
+```bash
+hashcat -a 0 -m <hash type> <hash file> <wordlist> ataque de diccionario basico -a ataque 0 de diccionario -m modo de hash o tipo de hash ej. md5 = 0
+```
+
+```bash
+hashcat -a 1 -m <hash type> <hash file> <wordlist1> <wordlist2> # ataque de convinacion passmarcos ;)
+```
+<h3> Mask Attack (el mas potente en mi opinion) </h3>
+
+
