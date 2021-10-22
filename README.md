@@ -40,7 +40,7 @@ hashcat -a 0 -m <hash type> <hash file> <wordlist> ataque de diccionario basico 
 ```bash
 hashcat -a 1 -m <hash type> <hash file> <wordlist1> <wordlist2> # ataque de convinacion passmarcos ;)
 ```
-<h3> Mask Attack (el mas potente en mi opinion) </h3>
+<h3> Mask Attack  </h3>
 
 
 <h4> Mascaras por defecto en hashcat </h4>
