@@ -92,4 +92,17 @@ Con el fin de reducir las combinaciones posibles para nuestro objetivo, podríam
 ```bash
 hashcat64.bin –m 1000 –a 3 ejemplo.hcmask # se puede pasar una lista de mascaras definidas por nosotros ya adentro se ponen asi 19,?l?l o normal password,?d o ?l?l?l?l?d
 ```
+
+<h3> Modo Hybrido </h3>
+
+ 6 | Hybrid Wordlist + Mask                                                                                    
+   
+```bash 
+hashcat -a 6 -m 0 hybrid_hash /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt '?d?s' # de la lista de rockyou metele un numero ?d al final y un caracter especial ?s de cada uno de los elementos de esa lista
 ```
+ 7 | Hybrid Mask + Wordlist  
+
+```bash 
+hashcat -a 7 -m 0 hybrid_hash_prefix -1 01 '20?1?d' /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt# pone un prefijo '20?1?d' con la mascara -1 a la lista de rockyou
+```
+
