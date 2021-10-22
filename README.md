@@ -43,3 +43,32 @@ hashcat -a 1 -m <hash type> <hash file> <wordlist1> <wordlist2> # ataque de conv
 <h3> Mask Attack (el mas potente en mi opinion) </h3>
 
 
+<h4> Mascaras por defecto en hashcat </h4>
+<ol>
+<li> ?l	 lower-case ASCII letters (a-z) </li>
+<li> ?u	 upper-case ASCII letters (A-Z) </li>
+<li> ?d	 digits (0-9) </li>
+<li> ?h	 0123456789abcdef </li>
+<li> ?H	 0123456789ABCDEF </li>
+<li> ?s	 special characters («space»!"#$%&'()*+,-./:;<=>?@[]^_`{ </li>
+<li> ?a	 ?l?u?d?s </li>
+<li> ?b	 0x00 - 0xff </li>
+</ol>
+
+```bash 
+Por ejemplo cada una representa un caracter en ese rango password?d lo cual hace match con password1 password2 passwordn
+Mascaras definidas por el usuario -1 al -4 
+```
+
+<h3>Mascaras personalizadas ejemplos</h3>
+
+```bash
+hashcat -a 3 -m 0 md5hash -1 01 '20?1?d'# Defini una mascara en -1 01 que solo puede tomar esos dos valores 0 y 1 no mas y el otro ?d cualquier nuemero 
+```
+
+```bash
+hashcat64.bin –m 1000 –a 3 ntlm.hp pass1234 #Comprobaría únicamente la contraseña (pass1234), mientras que el comando:
+```
+```bash
+hashcat64.bin –m 1000 –a 3 ntlm.hp pass?d?d?d?d #Comprobaría todo el espectro de contraseñas que empezaran por “pass” y cuyos cuatro siguientes caracteres fueran dígitos decimales (pass0000-pass9999)
+```
