@@ -72,3 +72,24 @@ hashcat64.bin –m 1000 –a 3 ntlm.hp pass1234 #Comprobaría únicamente la con
 ```bash
 hashcat64.bin –m 1000 –a 3 ntlm.hp pass?d?d?d?d #Comprobaría todo el espectro de contraseñas que empezaran por “pass” y cuyos cuatro siguientes caracteres fueran dígitos decimales (pass0000-pass9999)
 ```
+```bash
+./hashcat64.bin –m 1000 –a 3 ntlm.ph ?a?a?a?a?a –i –increment—min 2 increment—max 4 #Se probarán secuencialmente las máscaras:
+
+?a?a
+
+?a?a?a
+
+?a?a?a?a
+Con el fin de reducir las combinaciones posibles para nuestro objetivo, podríamos utilizar la máscara ¿u?l?l?l?l?l?l?l?ld?d?d?d que comprendería todo el espectro de contraseñas desde Aaaaaaaa0000 hasta Zzzzzzzz9999.
+```
+```bash
+./hashcat64.bin -m 1000 -a 3 ntlm.hp ?u?l?l?l?l?l?l?l19?d?d #En este caso, necesitaremos crear 2 máscaras, una para aquellas contraseñas que contengan la fecha de nacimiento desde 1900 hasta 1999:
+```
+```bash
+./hashcat64.bin -m 1000 -a 3 ntlm.hp -1 01 -2 012345678 ?u?l?l?l?l?l?l?l20?1?2 # Y otra para aquellas del 2000 al 2018.
+```
+
+```bash
+hashcat64.bin –m 1000 –a 3 ejemplo.hcmask # se puede pasar una lista de mascaras definidas por nosotros ya adentro se ponen asi 19,?l?l o normal password,?d o ?l?l?l?l?d
+```
+```
