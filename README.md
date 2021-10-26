@@ -126,5 +126,59 @@ cewl -d <depth to spider> -m <minimum word length> -w <output wordlist> <url of 
 
 cewl -d 1 -m 6 -w cweout.txt https://bloggerkingindia.blogspot.com/2017/03/how-to-crack-or-decrypt-wifi-handshake.html # ejemplo
 
+```
+
+<h4> Hashcat-utilsGenerador en base a los strings de las mascaras </h4>
+
+```bash 
+/mp64.bin Welcome?s
+Welcome#
+Welcome$
+Welcome%
+Welcome&
+Welcome'
+Welcome(
+Welcome)
+Welcome*
+Welcome+
+for i in $(cat words); do echo -n $i | sha1sum | tr -d ' -';done
+```
+
+<h4> Hashcat Rules (L33tspeak) </h4>
+
+```bash 
+hashcat -a 0 -m 100 hash rockyou.txt -r rule.txt# leetspeak rule c so0 si1 se3 ss5 sa@
+```
+
+```bash 
+/etc/shadow
+
+root:$6$tOA0cyybhb/Hr7DN$htr2vffCWiPGnyFOicJiXJVMbk1muPORR.eRGYfBYUnNPUjWABGPFiphjIjJC5xPfFUASIbVKDAHS3vTW1qU.1:18285:0:99999:7:::
+Pero solo se usa esta parte para crackear $6$tOA0cyybhb/Hr7DN$htr2vffCWiPGnyFOicJiXJVMbk1muPORR.eRGYfBYUnNPUjWABGPFiphjIjJC5xPfFUASIbVKDAHS3vTW1qU.1
+
+hashcat -m 1800 hash rockyou.txt
+```
+<h4> Crack Common Files  </h4>
+
+```bash 
+python office2john.py hashcat_Word_example.docx # Extraer el password de un documento de office protegido
+
+hashcat -m 9600 office_hash /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt
+
+zip2john a.zip
+
+hashcat -a 0 -m 17200 hash rockyou.txt # Busca solo que tipo de archivo es y cambia el -m 
+
+python pdf2john.py inventory.pdf | awk -F":" '{ print $2}'# Para Pdfs protegidos 
 
 ```
+
+```bash 
+aircrack-ng YourFile.cap -J YourNewfilename # handshake pasarlo a formato que JTR pueda entender para crackiarlo  .hccap
+
+hccap2john Your.hccapfile > Newfilename
+
+john yourfilename --wordlist=rockyou.txt
+
+```
+
