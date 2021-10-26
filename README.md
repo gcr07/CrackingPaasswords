@@ -106,3 +106,25 @@ hashcat -a 6 -m 0 hybrid_hash /opt/useful/SecLists/Passwords/Leaked-Databases/ro
 hashcat -a 7 -m 0 hybrid_hash_prefix -1 01 '20?1?d' /opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt# pone un prefijo '20?1?d' con la mascara -1 a la lista de rockyou
 ```
 
+<h3> Generador de Diccionarios </h3>
+
+
+<h4> Chunch </h4>
+
+```bash 
+crunch <minimum length> <maximum length> <charset> -t <pattern> -o <output file> # en general se usa asi para ingresar como "mascaras" 
+# The "-t" option is used to specify the pattern for generated passwords. The pattern can contain "@," representing lower case characters, "," (comma) will insert upper case characters, "%" will insert numbers, and "^" will insert symbols.
+
+crunch 17 17 -t ILFREIGHT201%@@@@ -o wordlist # Ejemplo The pattern "ILFREIGHT201%@@@@" will create words with the years 2010-2019 followed by four letters. The length here is 17, which is constant for all words.
+
+```
+
+<h4> CeWL Generador de Passwords tipo spider </h4>
+
+```bash 
+cewl -d <depth to spider> -m <minimum word length> -w <output wordlist> <url of website> # general 
+
+cewl -d 1 -m 6 -w cweout.txt https://bloggerkingindia.blogspot.com/2017/03/how-to-crack-or-decrypt-wifi-handshake.html # ejemplo
+
+
+```
