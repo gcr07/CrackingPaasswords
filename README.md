@@ -182,3 +182,13 @@ john yourfilename --wordlist=rockyou.txt
 
 ```
 
+
+```bash 
+./cap2hccapx.bin corp_capture1-01.cap mic_to_crack.hccapx #  convertir de .cap a .hccapx para que lo entienda hashcat ( no me funciona aveces)
+hcxpcaptool -z pmkidhash_corp cracking_pmkid.cap / si funciona
+
+
+hashcat -a 0 -m 2500 mic.hccapx rockyou.txt
+
+```
+
